@@ -1,0 +1,29 @@
+---
+
+# install portion
+- name: install dependent packages
+  apt:
+    name: "{{item}}"
+    state: installed
+  with_items:
+    - apt-transport-https
+    - ca-certificates
+    - curl
+    - gnupg2
+    - software-properties-common
+
+- name: add docker repository apt key
+  apt_key:
+    id: 0EBFCD88
+    url: https://download.docker.com/linux/debian/gpg
+
+- name: add docker repository
+  apt_repository:
+    repo: deb [arch=amd64] https://download.docker.com/linux/debian stretch stable
+    state: present
+    update_cache: yes
+
+- name: install docker ce
+  apt:
+    name: docker-ce
+    state: installed
