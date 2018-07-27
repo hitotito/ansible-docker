@@ -1,5 +1,6 @@
 ---
 galaxy_info:
+  role_name: docker
   author: Hitoshi Okonogi
   description: role to install docker and configure
   company: hitotito
